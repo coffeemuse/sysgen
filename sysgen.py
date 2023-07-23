@@ -1750,7 +1750,8 @@ class sysgen:
         user = "MVS-sysgen"
         repo = "RAKF"
         self.custjobs_ipl("Getting current RAKF release from github", clpa=True)
-        self.git_clone("https://github.com/MVS-sysgen/RAKF")
+        # self.git_clone("https://github.com/MVS-sysgen/RAKF")
+        self.git_clone("https://github.com/coffeemuse/RAKF")
         self.print("Generating temp/RAKF/rakf_install.jcl")
         with open("temp/rakf_users.txt", 'w') as out_rakf:
             rakf_line = "{user:7.7}  {group:8.8}{groups:1}{password:8.8} {oper:1}\n"
@@ -2073,7 +2074,8 @@ class sysgen:
         self.print("Step 9. Installing MVS/CE Package Manager MVP", color="CYAN")
         self.restore_dasd("32_RAKF")
         self.custjobs_ipl("Installing MVP", clpa=True)
-        self.git_clone("https://github.com/MVS-sysgen/MVP", out_folder="MVSCE")
+        # self.git_clone("https://github.com/MVS-sysgen/MVP", out_folder="MVSCE")
+        self.git_clone("https://github.com/coffeemuse/MVP", out_folder="MVSCE")
         
         rakf_admin_user,rakf_admin_password = self.get_rakf_admin()
 
