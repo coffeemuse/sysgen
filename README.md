@@ -1,13 +1,30 @@
-# MVS Community Edition Sysgen
+# Coffee OS (c/OS)
 
 ![NETSOL](/screenshots/01_netsol.png)
+
+## What is Coffee OS (c/OS)?
+
+Coffee OS (c/OS) is a mainframe operating system targeting the 24-bit IBM System/370 architecture running under a recent version of the Hercules emulator.
+
+At its core is MVS 3.8j, the public domain operating system from IBM, and ancestor to z/OS. Beyond the core public domain MVS, it integrates many opensource or public domain mods, patches, and components to provide additional or missing functionality.
+
+Using [MVS/CE](https://github.com/MVS-sysgen/sysgen) as a starting point, c/OS various changes to align with my preferences and goals. Re-branding as c/OS exists only to distinguish it from MVS/CE.  
+
+This fork/branch is not intended to compete with MVS/CE. It is my personal fork as I intend to use it for my personal experimentation.  This fork is not officially supported. There are no claims that c/OS is suitable for anything beyond experimentation.   
+
+
+## Disclaimer
+```
+THIS SOFTWARE IS PROVIDED “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL ANY CONTRIBUTOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+```
+
 
 To use this version of MVS you can download the current release and run `bash start_mvs.sh`.
 
 Requirements:
 
 - Linux
-- hercules SDL >= 4.5 (see below how to build SDL Hercules)
+- Aethra Hercules  >= 4.5 (see below how to build Aethra Hercules.  Note that SDL Hercules should work, but c/OS is only being tested again Aethra)
 - python3
 - git
 - tar
@@ -23,42 +40,6 @@ Go to https://github.com/MVS-sysgen/sysgen/releases and download the latest rele
 Tagged versions are official releases, latest is automatically built after every
 commit. The latest version has all the recent changes and might be unstable. 
 
-## Docker
-
-If you have docker you can run MVS/CE in a docker container. 
-
-From the command line run:
-
-```
-docker run -d \
-  --name=mvsce \
-  -e HUSER=docker \
-  -e HPASS=docker \
-  -p 2121:21 \
-  -p 2323:23 \
-  -p 3270:3270 \
-  -p 3505:3505 \
-  -p 3506:3506 \
-  -p 8888:8888 \
-  -v /opt/docker/mvsce:/config \
-  -v /opt/docker/mvsce/printers:/printers \
-  -v /opt/docker/mvsce/punchcards:/punchcards \
-  -v /opt/docker/mvsce/logs:/logs \
-  -v /opt/docker/mvsce/dasd:/dasd \
-  -v /opt/docker/mvsce/certs:/certs \
-  --restart unless-stopped \
-  mainframed767/mvsce:latest
-```
-
-Make sure the directories are correct for your docker volumes and hit enter,
-this will download the latest MVS/CE release and deploy it. You can then
-connect with you 3270 client on port 3270 (or port 2323 for encrypted 
-communication).
-
-
-More details are available here: https://hub.docker.com/r/mainframed767/mvsce 
-
-If you wish to build this docker container yourself you can see the Dockerfile here: https://github.com/MVS-sysgen/docker-mvsce
 
 ## Screenshots
 

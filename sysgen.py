@@ -24,7 +24,7 @@ except ModuleNotFoundError:
 
 
 VERSION = "V1R0M0"
-CODENAME = 'UNEXPECTED SLOTH'
+CODENAME = 'Anticipated Americano'
 
 # Hercules will frequently crash for some reason, we use this to try 
 # and catch them instead of waiting for the timeout
@@ -51,32 +51,29 @@ usermods = ["AY12275","JLM0001","JLM0002","JLM0003","JLM0004","SLB0002","SYZM001
 
 
 logo = '''
-  ==============================================================
-  =  =====  ==  ====  ===      ===========  ===     ===        =
-  =   ===   ==  ====  ==  ====  =========  ===  ===  ==  =======
-  =  =   =  ==  ====  ==  ====  ========  ===  ========  =======
-  =  == ==  ==  ====  ===  ============  ====  ========  =======
-  =  =====  ==   ==   =====  =========  =====  ========      ===
-  =  =====  ===  ==  ========  ======  ======  ========  =======
-  =  =====  ===  ==  ===  ====  ====  =======  ========  =======
-  =  =====  ====    ====  ====  ===  =========  ===  ==  =======
-  =  =====  =====  ======      ===  ===========     ===        =
-  ==============================================================
+           __   ___    ____  
+  ___     / /  / _ \  / ___| 
+ / __|   / /  | | | | \___ \ 
+| (__   / /   | |_| |  ___) |
+ \___| /_/     \___/  |____/ 
+
+      Coffee OS (c/OS)
+
 '''
 
 release_readme = '''
-# MVS Community Edition
+# Coffee OS (c/OS)
 Release: {codename}
 Version: {version}
 
-To run MVS/CE run the script `bash start_mvs.sh` and connect your tn3270 client
-to localhost (127.0.0.1) on port 3270 (e.g. `x3270 localhost:3270`)
+To run Coffee OS run the script `bash start_mvs.sh` and connect your tn3270 
+client to localhost (127.0.0.1) on port 3270 (e.g. `x3270 localhost:3270`)
 
 Users:
 
 {users}
 
-For more information see: https://github.com/MVS-sysgen/sysgen
+For more information see: https://github.com/coffeemuse/sysgen
 '''
 
 reply_num = 0
@@ -1693,7 +1690,7 @@ class sysgen:
         jobcard = "//{userid}A JOB (1),'ADDUSER',CLASS=S,MSGLEVEL=(1,1),MSGCLASS=A\n"
 
 
-        with open("users.conf", 'r') as users:
+        with open(self.users, 'r') as users:
             for user in users:
                 if "#" in user[0]:
                     # comment skipped
@@ -2071,7 +2068,7 @@ class sysgen:
 
     def step_09_mvp(self):
         self.set_step("step_09_mvp")
-        self.print("Step 9. Installing MVS/CE Package Manager MVP", color="CYAN")
+        self.print("Step 9. Installing C/OS Package Manager MVP", color="CYAN")
         self.restore_dasd("32_RAKF")
         self.custjobs_ipl("Installing MVP", clpa=True)
         # self.git_clone("https://github.com/MVS-sysgen/MVP", out_folder="MVSCE")
@@ -2459,7 +2456,7 @@ def main():
         main_steps.append(k)
         all_substeps.append(steps[k])
 
-    desc = "MVS/CE sysgen is a python script, a collection of hercules tools, JCL, source code and other tools to create and install MVS/CE."
+    desc = "C/OS sysgen is a python script, a collection of hercules tools, JCL, source code and other tools to create and install C/OS."
 
     arg_parser = argparse.ArgumentParser(description=desc,
                         usage='%(prog)s [options]',
@@ -2469,7 +2466,7 @@ def main():
 #    arg_parser.add_argument("--no-brexx", help="Do not install brexx (this will also prevent RAKF from installing)", action="store_true")
 #    arg_parser.add_argument("--no-rakf", help="Do not install RAKF", action="store_true")
 #    arg_parser.add_argument("--no-ispf", help="Do not install Wally ISPF", action="store_true")
-    arg_parser.add_argument("--release", help="This makes a release of MVS/CE", action="store_true")
+    arg_parser.add_argument("--release", help="This makes a release of C/OS", action="store_true")
     arg_parser.add_argument('-l', "--list", help="List all the steps and substeps", action="store_true")
     arg_parser.add_argument('--step', help="Restart sysgen from this step. The install will continue from here. Use --list to get a list of all steps/substeps.", choices=main_steps, default=False)
     arg_parser.add_argument('--substep', help="Restart sysgen from a steps substep. The install will continue from here. Use --list to get a list of all steps/substeps.", default=False)

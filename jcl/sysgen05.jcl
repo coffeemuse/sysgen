@@ -498,16 +498,20 @@ WRITE ******************************************-
 *************************************
 WRITE *                                         -
                                     *
+WRITE *                       Welcome to Coffee -
+OS (C/OS)                           *
+WRITE *                       ==================-
+=========                           *
 WRITE *                                         -
                                     *
-WRITE *                    Welcome to MVS Commun-
-ity Edition                         *
-WRITE *                    =====================-
-===========                         *
-WRITE *                                         -
-                                    *
-WRITE *                                         -
-                                    *
+WRITE ******************************************-
+*************************************
+WRITE *  Coffee OS (C/OS) is the caffeinated main-
+frame operating system built on    *
+WRITE *  the foundation of MVS 3.8j. C/OS is base-
+d on MVS/CE and Jay Moseley's      *
+WRITE *  System Generation process.              -
+                                   *
 WRITE ******************************************-
 *************************************
 WRITE Run RX MVP LIST to see a list of installable packages
