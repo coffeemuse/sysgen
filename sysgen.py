@@ -1328,8 +1328,8 @@ class sysgen:
 
         self.print('Setting version to {}'.format(netsol_version))
 
-        release = "DISTRIB_ID=MVSCE\nDISTRIB_RELEASE={version}\nDISTRIB_CODENAME=\"{codename}\"\nDISTRIB_DESCRIPTION=\"{desc}\"\nDISTRIB_DATE=\"{date}\"\n".format(
-                    version=self.version, date=now.strftime("%x"), codename=CODENAME, desc="MVSCE {}".format(self.version))
+        release = "DISTRIB_ID=c/OS\nDISTRIB_RELEASE={version}\nDISTRIB_CODENAME=\"{codename}\"\nDISTRIB_DESCRIPTION=\"{desc}\"\nDISTRIB_DATE=\"{date}\"\n".format(
+                    version=self.version, date=now.strftime("%x"), codename=CODENAME, desc="c/OS {}".format(self.version))
 
         temp_jcl = open("temp/sysgen05a.jcl", 'w')
 
